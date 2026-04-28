@@ -1,0 +1,56 @@
+.layout-section {
+  width: 100%;
+}
+
+/* Vertical Spacing */
+.layout-section--xl {
+  padding: 8rem 0;
+}
+
+.layout-section--lg {
+  padding: 6rem 0;
+}
+
+.layout-section--md {
+  padding: 4rem 0;
+}
+
+.layout-section--sm {
+  padding: 2rem 0;
+}
+
+.layout-section--xs {
+  padding: 1rem 0;
+}
+
+/* Variants */
+.layout-section--dark {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+.layout-section--white {
+  background-color: #1e293b;
+  /* Re-purposing white variant for dark theme if needed, but better to use specific variants */
+  color: #f8fafc;
+}
+
+
+.layout-section--brand {
+  background-color: var(--color-primary, #6366f1);
+  color: var(--color-white, #ffffff);
+}
+
+@media (max-width: 768px) {
+  .layout-section--xl {
+    padding: 4rem 0;
+  }
+
+  .layout-section--lg {
+    padding: 3rem 0;
+  }
+
+  .layout-section--md {
+    padding: 2rem 0;
+  }
+}

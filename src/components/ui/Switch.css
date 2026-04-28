@@ -1,0 +1,74 @@
+.ui-switch-container {
+  display: flex;
+  align-items: center;
+}
+
+.ui-switch-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  color: var(--text);
+  transition: color var(--transition-fast);
+}
+
+.ui-switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ui-switch-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-normal);
+  flex-shrink: 0;
+}
+
+.ui-switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform var(--transition-normal);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Checked state */
+.ui-switch-input:checked + .ui-switch-toggle {
+  background-color: var(--accent);
+}
+
+.ui-switch-input:checked + .ui-switch-toggle .ui-switch-thumb {
+  transform: translateX(20px);
+}
+
+/* Disabled state */
+.ui-switch-input:disabled + .ui-switch-toggle {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ui-switch-input:disabled ~ .ui-switch-text {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Focus state */
+.ui-switch-input:focus-visible + .ui-switch-toggle {
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* Hover effects */
+.ui-switch-label:hover .ui-switch-toggle {
+  opacity: 0.9;
+}

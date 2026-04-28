@@ -1,0 +1,35 @@
+.layout-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+.layout-container--full {
+  max-width: 100%;
+}
+
+.layout-container--xl {
+  max-width: 1280px;
+}
+
+.layout-container--lg {
+  max-width: 1024px;
+}
+
+.layout-container--md {
+  max-width: 768px;
+}
+
+.layout-container--sm {
+  max-width: 640px;
+}
+
+@media (max-width: 640px) {
+  .layout-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

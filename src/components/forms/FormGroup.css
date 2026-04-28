@@ -1,0 +1,49 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form-group__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: goldenrod;
+  margin-bottom: 0.25rem;
+}
+
+.form-group__required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.form-group__content {
+  position: relative;
+}
+
+.form-group__error-msg {
+  font-size: 0.8125rem;
+  color: #ef4444;
+  margin-top: 0.25rem;
+  animation: slideDown 0.2s ease;
+}
+
+.form-group__hint-msg {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

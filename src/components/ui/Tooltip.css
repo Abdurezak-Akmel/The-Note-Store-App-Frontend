@@ -1,0 +1,103 @@
+.ui-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.ui-tooltip {
+  position: absolute;
+  background-color: var(--text-h);
+  color: var(--bg);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+  animation: tooltip-fade-in 0.15s ease-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ui-tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+}
+
+/* Tooltip Positions */
+.ui-tooltip--top {
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ui-tooltip--top .ui-tooltip-arrow {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--text-h);
+}
+
+.ui-tooltip--bottom {
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ui-tooltip--bottom .ui-tooltip-arrow {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: var(--text-h);
+}
+
+.ui-tooltip--left {
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ui-tooltip--left .ui-tooltip-arrow {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: var(--text-h);
+}
+
+.ui-tooltip--right {
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ui-tooltip--right .ui-tooltip-arrow {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: var(--text-h);
+}
+
+@keyframes tooltip-fade-in {
+  from { opacity: 0; transform: scale(0.9) translate(-50%, 0); }
+  to { opacity: 1; transform: scale(1) translate(-50%, 0); }
+}
+
+/* Adjust transform for left/right animations */
+.ui-tooltip--left {
+  animation-name: tooltip-fade-in-left;
+}
+
+.ui-tooltip--right {
+  animation-name: tooltip-fade-in-right;
+}
+
+@keyframes tooltip-fade-in-left {
+  from { opacity: 0; transform: scale(0.9) translateY(-50%); }
+  to { opacity: 1; transform: scale(1) translateY(-50%); }
+}
+
+@keyframes tooltip-fade-in-right {
+  from { opacity: 0; transform: scale(0.9) translateY(-50%); }
+  to { opacity: 1; transform: scale(1) translateY(-50%); }
+}

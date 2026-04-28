@@ -1,0 +1,44 @@
+.ui-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.ui-progress-bar-container {
+  flex-grow: 1;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  height: 8px; /* Default height for md */
+}
+
+.ui-progress-bar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--accent);
+}
+
+.ui-progress-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-h);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Progress Sizes */
+.ui-progress--sm .ui-progress-bar-container {
+  height: 4px;
+}
+
+.ui-progress--lg .ui-progress-bar-container {
+  height: 12px;
+}
+
+/* Progress Variants */
+.ui-progress-bar--primary { background-color: var(--accent); }
+.ui-progress-bar--success { background-color: var(--success); }
+.ui-progress-bar--warning { background-color: var(--warning); }
+.ui-progress-bar--danger { background-color: var(--danger); }

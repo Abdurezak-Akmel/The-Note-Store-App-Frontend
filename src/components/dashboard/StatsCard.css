@@ -1,0 +1,69 @@
+.dashboard-stats-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f3f4f6;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-stats-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dashboard-stats-card__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.dashboard-stats-card__value-container {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.dashboard-stats-card__value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dashboard-stats-card__trend {
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-stats-card__trend.is-up {
+  color: #10b981; /* green-500 */
+}
+
+.dashboard-stats-card__trend.is-down {
+  color: #ef4444; /* red-500 */
+}
+
+.dashboard-stats-card__icon-container {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary, #6366f1);
+  font-size: 1.25rem;
+}
