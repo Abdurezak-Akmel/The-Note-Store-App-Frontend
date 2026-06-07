@@ -23,15 +23,23 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav className={`nav-navbar ${className}`} {...props}>
-
       <div className="nav-navbar__container">
         <div className="nav-navbar__brand">
-          <a href="/" className="nav-navbar__logo">{logo}</a>
+          <a href="/" className="nav-navbar__logo">
+            {typeof logo === 'string' ? (
+              <>
+                <img src="/favicon.jpg" alt="" className="nav-navbar__logo-mark" />
+                <span>{logo}</span>
+              </>
+            ) : (
+              logo
+            )}
+          </a>
         </div>
         
         <div className={`nav-navbar__menu ${isOpen ? 'is-open' : ''}`}>
           {items.map((item, idx) => (
-            <a key={idx} href={item.href} className="nav-navbar__link">
+            <a key={idx} href={item.href} className="nav-navbar__link" onClick={() => setIsOpen(false)}>
               {item.label}
             </a>
           ))}
@@ -44,6 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({
             className="nav-navbar__toggle" 
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle navigation"
+            aria-expanded={isOpen}
           >
             <span className="nav-navbar__toggle-bar"></span>
             <span className="nav-navbar__toggle-bar"></span>

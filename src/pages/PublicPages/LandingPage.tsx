@@ -12,8 +12,8 @@ const LandingPage: React.FC = () => {
     ];
 
     const authActions = (
-        <div style={{ display: 'flex', gap: '1.25rem' }}>
-            <Button variant="ghost" onClick={() => window.location.href = '/user-login'} style={{ color: '#94a3b8' }}>
+        <div className="nav-actions">
+            <Button variant="ghost" onClick={() => window.location.href = '/user-login'}>
                 Sign In
             </Button>
             <Button onClick={() => window.location.href = '/register'}>
@@ -23,60 +23,51 @@ const LandingPage: React.FC = () => {
     );
 
     return (
-        <main className="landing-page" style={{ backgroundColor: '#0f172a' }}>
+        <main className="landing-page">
             <Navbar
                 logo="NoteStore"
                 items={navItems}
                 actions={authActions}
             />
 
-            <Section variant="dark" size="xl">
-                <Container>
+            <Section variant="brand" size="xs">
+                <Container size="xl">
                     <Hero
-                        title={
-                            <>
-                                Capture your <span style={{ color: '#818cf8' }}>ideas</span>, <br />
-                                anywhere, anytime.
-                            </>
-                        }
-                        subtitle="The ultimate note-taking app for students, professionals, and world-shapers. Simple yet powerful enough for your biggest dreams."
+                        title="NoteStore"
+                        subtitle="A clean, focused home for the notes, plans, and course ideas you want to keep moving."
                         primaryAction={{
-                            label: 'Sign Up Free',
+                            label: 'Start Writing',
                             onClick: () => window.location.href = '/register'
                         }}
                         secondaryAction={{
-                            label: 'Learn More',
+                            label: 'Explore Features',
                             onClick: () => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
                         }}
-                        image="../../assets/note.jpg"
+                        image="/favicon.jpg"
                     />
                 </Container>
             </Section>
 
             <Section id="features" variant="white" size="lg">
                 <Container>
-                    <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', color: '#f8fafc' }}>
-                            Everything you need to be productive
-                        </h2>
-                        <p style={{ color: '#94a3b8', fontSize: '1.125rem' }}>
-                            Designed to help you focus on your thoughts, not the tool.
-                        </p>
+                    <div className="section-heading">
+                        <span className="section-kicker">Built for focus</span>
+                        <h2>Everything feels organized from the first note.</h2>
+                        <p>Fast capture, readable cards, and a workspace that gives your thoughts room to breathe.</p>
                     </div>
 
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                        gap: '2rem'
-                    }}>
-                        <Card title="Cloud Sync" padding="lg" style={{ backgroundColor: '#0f172a', border: '1px solid rgba(255,255,255,0.05)', color: '#f8fafc' }}>
-                            <p style={{ color: '#94a3b8' }}>Your notes are synced across all your devices in real-time.</p>
+                    <div className="landing-feature-grid">
+                        <Card title="Cloud Sync" padding="lg" className="feature-card">
+                            <span className="feature-card__icon">S</span>
+                            <p>Your notes stay available across sessions with a calm dashboard built for quick review.</p>
                         </Card>
-                        <Card title="Markdown Support" padding="lg" style={{ backgroundColor: '#0f172a', border: '1px solid rgba(255,255,255,0.05)', color: '#f8fafc' }}>
-                            <p style={{ color: '#94a3b8' }}>Write beautiful notes using rich text and standard markdown syntax.</p>
+                        <Card title="Rich Drafting" padding="lg" className="feature-card">
+                            <span className="feature-card__icon">D</span>
+                            <p>Write longer ideas in a focused editor with clear fields, generous spacing, and instant saving.</p>
                         </Card>
-                        <Card title="Stay Organized" padding="lg" style={{ backgroundColor: '#0f172a', border: '1px solid rgba(255,255,255,0.05)', color: '#f8fafc' }}>
-                            <p style={{ color: '#94a3b8' }}>Use folders, tags, and smart filters to manage everything efficiently.</p>
+                        <Card title="Easy Management" padding="lg" className="feature-card">
+                            <span className="feature-card__icon">M</span>
+                            <p>Admin views make users and notes easier to scan, search, audit, and maintain.</p>
                         </Card>
                     </div>
                 </Container>
@@ -84,20 +75,34 @@ const LandingPage: React.FC = () => {
 
             <Section id="about" variant="dark" size="lg">
                 <Container>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem', alignItems: 'center' }}>
-                        <div style={{ flex: '1', minWidth: '320px' }}>
-                            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1.5rem', color: '#f8fafc' }}>Our Story</h2>
-                            <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: '#94a3b8', marginBottom: '1.5rem' }}>
-                                NoteStore was founded with a simple goal: to make capturing information as effortless as possible.
-                                We believe that everyone should have a place to dump their thoughts, refine them, and turn them into reality.
+                    <div className="story-layout">
+                        <div className="story-copy">
+                            <span className="section-kicker">Why NoteStore</span>
+                            <h2>Designed like a quiet desk, not a noisy feed.</h2>
+                            <p>
+                                NoteStore keeps the interface simple, warm, and structured so students and professionals can
+                                capture ideas without fighting the tool.
                             </p>
-                            <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: '#94a3b8' }}>
-                                Our platform is built by students and professionals, for students and professionals.
-                                We focus on speed, privacy, and simplicity.
+                            <p>
+                                The experience now carries the same polish from the public site to the user workspace and admin
+                                console, so every path through the app feels considered.
                             </p>
                         </div>
-                        <div style={{ flex: '1', minWidth: '320px', textAlign: 'center' }}>
-                            <img src="https://illustrations.popsy.co/white/creative-work.svg" alt="About" style={{ maxWidth: '100%', height: 'auto', borderRadius: '1rem' }} />
+                        <div className="story-panel">
+                            <div className="story-note-stack">
+                                <div className="story-note">
+                                    <strong>Capture</strong>
+                                    Save quick thoughts before they disappear.
+                                </div>
+                                <div className="story-note">
+                                    <strong>Refine</strong>
+                                    Turn fragments into useful study or project material.
+                                </div>
+                                <div className="story-note">
+                                    <strong>Return</strong>
+                                    Find the right note again when it matters.
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </Container>
@@ -105,26 +110,27 @@ const LandingPage: React.FC = () => {
 
             <Section id="contact" variant="white" size="lg">
                 <Container>
-                    <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', color: '#f8fafc' }}>Get in Touch</h2>
-                        <p style={{ color: '#94a3b8', fontSize: '1.125rem', marginBottom: '3rem' }}>
-                            Have questions or feedback? We'd love to hear from you.
-                        </p>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'left' }}>
-                            <div style={{ padding: '1.5rem', backgroundColor: '#0f172a', borderRadius: '1rem' }}>
-                                <strong style={{ color: '#f8fafc' }}>Email:</strong> <span style={{ color: '#94a3b8' }}>support@notestore.app</span>
-                            </div>
-                            <div style={{ padding: '1.5rem', backgroundColor: '#0f172a', borderRadius: '1rem' }}>
-                                <strong style={{ color: '#f8fafc' }}>Twitter:</strong> <span style={{ color: '#94a3b8' }}>@notestore_app</span>
-                            </div>
+                    <div className="section-heading">
+                        <span className="section-kicker">Contact</span>
+                        <h2>Questions, feedback, or support.</h2>
+                        <p>Reach the NoteStore team through the channels below.</p>
+                    </div>
+                    <div className="contact-grid">
+                        <div className="contact-card">
+                            <span>Email</span>
+                            <strong>support@notestore.app</strong>
+                        </div>
+                        <div className="contact-card">
+                            <span>Twitter</span>
+                            <strong>@notestore_app</strong>
                         </div>
                     </div>
                 </Container>
             </Section>
 
-            <footer style={{ padding: '3rem 0', borderTop: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', backgroundColor: '#0f172a' }}>
+            <footer className="site-footer">
                 <Container>
-                    <p style={{ color: '#64748b' }}>© 2026 NoteStore App. Capture your lightbulb moments.</p>
+                    <p>Copyright 2026 NoteStore App. Capture your lightbulb moments.</p>
                 </Container>
             </footer>
         </main>

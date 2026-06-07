@@ -22,6 +22,7 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <div className={`landing-hero ${className}`}>
       <div className="landing-hero__content">
+        <span className="landing-hero__eyebrow">Notes, tasks, and ideas in one calm workspace</span>
         <h1 className="landing-hero__title">{title}</h1>
         <p className="landing-hero__subtitle">{subtitle}</p>
         <div className="landing-hero__actions">
@@ -37,11 +38,37 @@ const Hero: React.FC<HeroProps> = ({
           )}
         </div>
       </div>
-      {image && (
-        <div className="landing-hero__image-container">
-          <img src={image} alt="Hero" className="landing-hero__image" />
+      <div className="landing-hero__image-container" aria-hidden="true">
+        <div className="landing-hero__mockup">
+          <div className="landing-hero__mockup-topbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div className="landing-hero__mockup-body">
+            <div className="landing-hero__mockup-sidebar">
+              {image && <img src={image} alt="" className="landing-hero__brand-image" />}
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div className="landing-hero__mockup-notes">
+              <div className="landing-hero__mock-note is-yellow">
+                <strong>Course plan</strong>
+                <span>React hooks, API calls, deployment</span>
+              </div>
+              <div className="landing-hero__mock-note is-teal">
+                <strong>Project ideas</strong>
+                <span>Polish the dashboard and ship confidently</span>
+              </div>
+              <div className="landing-hero__mock-note is-coral">
+                <strong>Today</strong>
+                <span>Capture, sort, review</span>
+              </div>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

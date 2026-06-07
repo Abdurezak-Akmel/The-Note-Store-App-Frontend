@@ -1,69 +1,85 @@
 .dashboard-stats-card {
-  background: #ffffff;
-  border-radius: 1rem;
-  padding: 1.5rem;
   display: flex;
-  justify-content: space-between;
+  min-height: 150px;
   align-items: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  border: 1px solid #f3f4f6;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .dashboard-stats-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  border-color: rgba(15, 118, 110, 0.28);
+  box-shadow: var(--shadow-md);
 }
 
 .dashboard-stats-card__content {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .dashboard-stats-card__label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #6b7280;
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0;
   text-transform: uppercase;
-  letter-spacing: 0.025em;
 }
 
 .dashboard-stats-card__value-container {
   display: flex;
   align-items: baseline;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
 .dashboard-stats-card__value {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: #111827;
+  color: var(--text-h);
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .dashboard-stats-card__trend {
-  font-size: 0.875rem;
-  font-weight: 600;
   display: flex;
   align-items: center;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .dashboard-stats-card__trend.is-up {
-  color: #10b981; /* green-500 */
+  color: var(--success);
 }
 
 .dashboard-stats-card__trend.is-down {
-  color: #ef4444; /* red-500 */
+  color: var(--danger);
 }
 
 .dashboard-stats-card__icon-container {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.75rem;
-  background: #f3f4f6;
   display: flex;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary, #6366f1);
-  font-size: 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+@media (max-width: 540px) {
+  .dashboard-stats-card {
+    min-height: 126px;
+  }
+
+  .dashboard-stats-card__value {
+    font-size: 34px;
+  }
 }

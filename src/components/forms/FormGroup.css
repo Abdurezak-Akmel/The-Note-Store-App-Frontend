@@ -1,21 +1,21 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: 8px;
   width: 100%;
 }
 
 .form-group__label {
   display: block;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: goldenrod;
-  margin-bottom: 0.25rem;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-h);
+  margin-bottom: 2px;
+  letter-spacing: 0;
 }
 
 .form-group__required {
-  color: #ef4444;
+  color: var(--danger);
   margin-left: 0.25rem;
 }
 
@@ -25,14 +25,14 @@
 
 .form-group__error-msg {
   font-size: 0.8125rem;
-  color: #ef4444;
+  color: var(--danger);
   margin-top: 0.25rem;
   animation: slideDown 0.2s ease;
 }
 
 .form-group__hint-msg {
   font-size: 0.8125rem;
-  color: #6b7280;
+  color: var(--text-soft);
   margin-top: 0.25rem;
 }
 

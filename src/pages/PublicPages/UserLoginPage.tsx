@@ -18,7 +18,6 @@ const UserLoginPage: React.FC = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Redirect admins to the admin portal before attempting to login through the user portal
         const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
         if (email.toLowerCase() === adminEmail?.toLowerCase()) {
             navigate('/admin-login');
@@ -33,7 +32,6 @@ const UserLoginPage: React.FC = () => {
 
             if (response.success && response.user && response.token) {
                 login(response.token, response.user);
-                // Standard user redirect
                 navigate('/user-dashboard');
             }
         } catch (err: any) {
@@ -44,102 +42,61 @@ const UserLoginPage: React.FC = () => {
     };
 
     const footer = (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        <div className="auth-footer-stack">
             <div>
-                Don't have an account? <a href="/register" style={{ color: '#818cf8', fontWeight: 600 }}>Create one</a>
+                Don't have an account? <a href="/register">Create one</a>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', fontSize: '0.85rem', opacity: 0.8 }}>
-                <a href="/reset-password" style={{ color: '#94a3b8' }}>Forgot password?</a>
-                <a href="/admin-login" style={{ color: '#94a3b8' }}>Admin Login</a>
+            <div className="auth-mini-links">
+                <a href="/reset-password">Forgot password?</a>
+                <a href="/admin-login">Admin Login</a>
             </div>
         </div>
     );
 
     return (
-        <main className="login-page" style={{
-            backgroundColor: '#0f172a',
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative'
-        }}>
-            <div style={{ position: 'absolute', top: '2rem', left: '2rem' }}>
-                <Button variant="ghost" onClick={() => navigate('/')} style={{ color: '#94a3b8' }}>
-                    ← Back to Home
+        <main className="page-shell page-shell--auth">
+            <div className="auth-back">
+                <Button variant="ghost" onClick={() => navigate('/')}>
+                    Back to Home
                 </Button>
             </div>
-            <Section variant="dark">
-
+            <Section variant="dark" size="xs">
                 <Container size="sm">
                     <AuthCard
                         title="Welcome Back"
-                        subtitle="Please enter your details to sign in to your account."
+                        subtitle="Sign in to return to your NoteStore workspace."
                         footer={footer}
-                        style={{ backgroundColor: '#1e293b', border: '1px solid rgba(255,255,255,0.05)' }}
                     >
-                        {error && (
-                            <div style={{
-                                color: '#fca5a5',
-                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                                padding: '10px',
-                                borderRadius: '6px',
-                                marginBottom: '1.5rem',
-                                textAlign: 'center',
-                                border: '1px solid rgba(239, 68, 68, 0.2)'
-                            }}>
-                                {error}
-                            </div>
-                        )}
+                        <div className="auth-brand">
+                            <img src="/favicon.jpg" alt="NoteStore" />
+                        </div>
+                        {error && <div className="alert alert--error">{error}</div>}
                         <form onSubmit={handleLogin}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                            <div className="form-stack">
                                 <FormGroup label="Email Address">
                                     <Input
                                         type="email"
-                                        placeholder="emailaddress@gmail.com"
+                                        placeholder="you@example.com"
+                                        autoComplete="email"
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        style={{
-                                            backgroundColor: '#0f172a',
-                                            border: '2px solid rgba(255,255,255,0.4)',
-                                            color: 'goldenrod',
-                                            padding: '14px 18px',
-                                            fontSize: '1.1rem'
-                                        }}
                                     />
                                 </FormGroup>
 
                                 <FormGroup label="Password">
                                     <Input
                                         type="password"
-                                        placeholder="••••••••"
+                                        placeholder="Enter your password"
+                                        autoComplete="current-password"
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        style={{
-                                            backgroundColor: '#0f172a',
-                                            border: '2px solid rgba(255,255,255,0.4)',
-                                            color: 'goldenrod',
-                                            padding: '14px 18px',
-                                            fontSize: '1.1rem'
-                                        }}
                                     />
                                 </FormGroup>
 
-                                <Button
-                                    type="submit"
-                                    size="lg"
-                                    disabled={loading}
-                                    style={{
-                                        marginTop: '0.5rem',
-                                        fontWeight: 800,
-                                        fontSize: '1.25rem',
-                                        opacity: loading ? 0.7 : 1
-                                    }}
-                                >
-                                    {loading ? 'Signing In...' : 'Sign In'}
+                                <Button type="submit" size="lg" disabled={loading} isLoading={loading}>
+                                    Sign In
                                 </Button>
                             </div>
                         </form>

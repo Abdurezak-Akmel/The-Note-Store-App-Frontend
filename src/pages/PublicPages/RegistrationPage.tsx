@@ -15,8 +15,7 @@ const RegistrationPage: React.FC = () => {
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
-        
-        // Form Validation
+
         if (password.length < 8) {
             setError("Password must be at least 8 characters long.");
             return;
@@ -45,94 +44,51 @@ const RegistrationPage: React.FC = () => {
     );
 
     return (
-        <main className="registration-page" style={{
-            backgroundColor: '#0f172a',
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative'
-        }}>
-            <div style={{ position: 'absolute', top: '2rem', left: '2rem' }}>
-                <Button variant="ghost" onClick={() => navigate('/')} style={{ color: '#94a3b8' }}>
-                    ← Back to Home
+        <main className="page-shell page-shell--auth">
+            <div className="auth-back">
+                <Button variant="ghost" onClick={() => navigate('/')}>
+                    Back to Home
                 </Button>
             </div>
-            <Section variant="dark">
-
+            <Section variant="dark" size="xs">
                 <Container size="sm">
                     <AuthCard
                         title="Create an Account"
-                        subtitle="Join NoteStore to start capturing your best ideas."
+                        subtitle="Start a clean NoteStore workspace for your best ideas."
                         footer={footer}
-                        style={{ backgroundColor: '#1e293b', border: '1px solid rgba(255,255,255,0.05)' }}
                     >
-                        {error && (
-                            <div style={{
-                                color: '#fca5a5',
-                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                                padding: '10px',
-                                borderRadius: '6px',
-                                marginBottom: '1.5rem',
-                                textAlign: 'center',
-                                border: '1px solid rgba(239, 68, 68, 0.2)'
-                            }}>
-                                {error}
-                            </div>
-                        )}
+                        <div className="auth-brand">
+                            <img src="/favicon.jpg" alt="NoteStore" />
+                        </div>
+                        {error && <div className="alert alert--error">{error}</div>}
                         <form onSubmit={handleRegister}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-
-                                <FormGroup label="Email Address" required style={{ color: '#ffffff' }}>
+                            <div className="form-stack">
+                                <FormGroup label="Email Address" required>
                                     <Input
                                         type="email"
                                         placeholder="name@example.com"
+                                        autoComplete="email"
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        style={{
-                                            backgroundColor: '#0f172a',
-                                            border: '2px solid rgba(255,255,255,0.4)',
-                                            color: 'goldenrod',
-                                            padding: '14px 18px',
-                                            fontSize: '1.1rem'
-                                        }}
                                     />
                                 </FormGroup>
 
-                                <FormGroup label="Password" required hint="At least 8 characters." style={{ color: '#ffffff' }}>
+                                <FormGroup label="Password" required hint="Use at least 8 characters.">
                                     <Input
                                         type="password"
-                                        placeholder="••••••••"
+                                        placeholder="Create a password"
+                                        autoComplete="new-password"
                                         required
                                         minLength={8}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        style={{
-                                            backgroundColor: '#0f172a',
-                                            border: '2px solid rgba(255,255,255,0.4)',
-                                            color: 'goldenrod',
-                                            padding: '14px 18px',
-                                            fontSize: '1.1rem'
-                                        }}
                                     />
                                 </FormGroup>
 
-                                <Button
-                                    type="submit"
-                                    size="lg"
-                                    disabled={loading}
-                                    style={{
-                                        marginTop: '1.5rem',
-                                        fontWeight: 800,
-                                        fontSize: '1.25rem',
-                                        opacity: loading ? 0.7 : 1
-                                    }}
-                                >
-                                    {loading ? 'Creating Account...' : 'Register Account'}
+                                <Button type="submit" size="lg" disabled={loading} isLoading={loading}>
+                                    Register Account
                                 </Button>
-
                             </div>
                         </form>
                     </AuthCard>

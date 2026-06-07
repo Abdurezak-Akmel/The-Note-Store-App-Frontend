@@ -3,7 +3,6 @@ import { AuthCard } from '../../components/auth';
 import { FormGroup } from '../../components/forms';
 import { Input, Button } from '../../components/ui';
 import { Section, Container } from '../../components/layout';
-// New imports for frotend-backend implementation
 import { useNavigate } from 'react-router-dom';
 import authService from '../../services/authService';
 import { useAuth } from '../../hooks/useAuth';
@@ -29,7 +28,6 @@ const AdminLoginPage: React.FC = () => {
                     login(response.token, response.user);
                     navigate('/admin-dashboard');
                 } else {
-                    // Remove standard user credentials if they tried to login here
                     logout();
                     setError("Unauthorized access. Admin portal requires administrative privileges.");
                 }
@@ -42,119 +40,63 @@ const AdminLoginPage: React.FC = () => {
     };
 
     const footer = (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', fontSize: '0.9rem' }}>
-                <a href="/reset-password" style={{ color: 'goldenrod', fontWeight: 600 }}>Forgot Admin Password?</a>
-                <a href="/user-login" style={{ color: '#94a3b8' }}>User Portal</a>
-            </div>
+        <div className="auth-mini-links">
+            <a href="/reset-password">Forgot Admin Password?</a>
+            <a href="/user-login">User Portal</a>
         </div>
     );
 
     return (
-        <main className="admin-login-page" style={{
-            backgroundColor: '#0f172a',
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative'
-        }}>
-            <div style={{ position: 'absolute', top: '2rem', left: '2rem' }}>
-                <Button variant="ghost" onClick={() => navigate('/')} style={{ color: '#94a3b8' }}>
-                    ← Back to Home
+        <main className="page-shell page-shell--auth">
+            <div className="auth-back">
+                <Button variant="ghost" onClick={() => navigate('/')}>
+                    Back to Home
                 </Button>
             </div>
-            <Section variant="dark">
-
+            <Section variant="dark" size="xs">
                 <Container size="sm">
                     <AuthCard
                         title="Admin Portal"
-                        subtitle="Authorized access only. Please sign in to manage the store."
+                        subtitle="Secure access for managing NoteStore users and notes."
                         footer={footer}
-                        style={{ backgroundColor: '#1e293b', border: '1px solid rgba(255,255,255,0.05)' }}
                     >
-                        {error && (
-                            <div style={{
-                                color: '#fca5a5',
-                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                                padding: '10px',
-                                borderRadius: '6px',
-                                marginBottom: '1.5rem',
-                                textAlign: 'center',
-                                border: '1px solid rgba(239, 68, 68, 0.2)'
-                            }}>
-                                {error}
-                            </div>
-                        )}
-                        <div style={{
-                            backgroundColor: 'rgba(218, 165, 32, 0.1)',
-                            border: '1px dashed goldenrod',
-                            borderRadius: '8px',
-                            padding: '12px 16px',
-                            marginBottom: '1.5rem',
-                            fontSize: '0.9rem',
-                            color: '#e2e8f0',
-                            textAlign: 'left'
-                        }}>
-                            <div style={{ color: 'goldenrod', fontWeight: 700, marginBottom: '6px', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Demo Admin Access:</div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                                <div>Email: <span style={{ color: 'white', fontFamily: 'monospace' }}>admin@noteapp.com</span></div>
-                                <div>Password: <span style={{ color: 'white', fontFamily: 'monospace' }}>admin123</span></div>
-                            </div>
+                        <div className="auth-brand">
+                            <img src="/favicon.jpg" alt="NoteStore" />
+                        </div>
+                        {error && <div className="alert alert--error">{error}</div>}
+
+                        <div className="demo-panel">
+                            <div className="demo-panel__label">Demo Admin Access</div>
+                            <div>Email: <code>admin@noteapp.com</code></div>
+                            <div>Password: <code>admin123</code></div>
                         </div>
 
                         <form onSubmit={handleAdminLogin}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                            <div className="form-stack">
                                 <FormGroup label="Admin Email">
                                     <Input
                                         type="email"
                                         placeholder="admin@notestore.app"
+                                        autoComplete="email"
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        style={{
-                                            backgroundColor: '#0f172a',
-                                            border: '2px solid rgba(255,255,255,0.4)',
-                                            color: 'goldenrod',
-                                            padding: '14px 18px',
-                                            fontSize: '1.1rem'
-                                        }}
                                     />
                                 </FormGroup>
 
                                 <FormGroup label="Admin Password">
                                     <Input
                                         type="password"
-                                        placeholder="••••••••"
+                                        placeholder="Enter admin password"
+                                        autoComplete="current-password"
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        style={{
-                                            backgroundColor: '#0f172a',
-                                            border: '2px solid rgba(255,255,255,0.4)',
-                                            color: 'goldenrod',
-                                            padding: '14px 18px',
-                                            fontSize: '1.1rem'
-                                        }}
                                     />
                                 </FormGroup>
 
-                                <Button
-                                    type="submit"
-                                    size="lg"
-                                    disabled={loading}
-                                    style={{
-                                        marginTop: '0.5rem',
-                                        fontWeight: 800,
-                                        fontSize: '1.25rem',
-                                        backgroundColor: loading ? '#4b5563' : 'goldenrod',
-                                        color: '#0f172a',
-                                        border: 'none',
-                                        opacity: loading ? 0.7 : 1
-                                    }}
-                                >
-                                    {loading ? 'Authenticating...' : 'Admin Sign In'}
+                                <Button type="submit" size="lg" disabled={loading} isLoading={loading}>
+                                    Admin Sign In
                                 </Button>
                             </div>
                         </form>

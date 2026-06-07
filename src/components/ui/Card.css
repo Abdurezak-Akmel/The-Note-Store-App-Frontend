@@ -1,26 +1,28 @@
 .ui-card {
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  background: var(--surface);
   transition: all var(--transition-normal);
   overflow: hidden;
   box-sizing: border-box;
+  text-align: left;
 }
 
 .ui-card-title {
   margin: 0 0 16px;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 21px;
+  font-weight: 800;
   color: var(--text-h);
+  letter-spacing: 0;
 }
 
 .ui-card--elevated {
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-sm);
   border: 1px solid var(--border);
 }
 
 .ui-card--flat {
   border: none;
-  background: var(--bg-card);
+  background: var(--surface);
 }
 
 .ui-card--outline {
@@ -34,8 +36,8 @@
 
 .ui-card--clickable:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px -10px rgba(0,0,0,0.15);
-  border-color: var(--accent-border);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(15, 118, 110, 0.32);
 }
 
 /* Padding variants */
@@ -51,8 +53,8 @@
   padding: 32px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .ui-card--clickable:hover {
-    box-shadow: 0 12px 24px -10px rgba(0,0,0,0.5);
+@media (max-width: 540px) {
+  .ui-card--padding-lg {
+    padding: 22px;
   }
 }
