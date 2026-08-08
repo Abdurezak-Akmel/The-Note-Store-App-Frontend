@@ -1,6 +1,12 @@
 # The Note Store - Frontend
 
-A modern, responsive web application for managing personal notes. Built with React, TypeScript, and Vite, this frontend provides a seamless user experience for creating, editing, and organizing notes.
+A simple, modern and responsive web application for managing personal notes. Built with React, TypeScript, and Vite, this frontend provides a seamless user experience for creating, editing, and organizing notes.
+
+Built for the purpose of teaching intermmediate level website developers The Data Driven Design (3D) principles.
+
+<!-- Screenshot Landing Page -->
+
+![Landing Page](public/Landing_Page_The_Note_Store_App.png)
 
 ## 🚀 Features
 
@@ -23,18 +29,21 @@ A modern, responsive web application for managing personal notes. Built with Rea
 ## 📋 Prerequisites
 
 Ensure you have the following installed:
+
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
 - npm or yarn
 
 ## ⚙️ Setup & Installation
 
 1.  **Clone the repository**:
+
     ```bash
     git clone <https://github.com/Abdurezak-Akmel/The-Note-Store-App-Frontend.git>
-    cd frontend
+    cd The-Note-Store-App-Frontend
     ```
 
 2.  **Install dependencies**:
+
     ```bash
     npm install
     ```
@@ -48,20 +57,27 @@ Ensure you have the following installed:
 ## 🚀 Running the App
 
 ### Development Mode
+
 Start the development server with Hot Module Replacement (HMR):
+
 ```bash
 npm run dev
 ```
+
 The app will be available at `http://localhost:5173`.
 
 ### Production Build
+
 Build the app for production:
+
 ```bash
 npm run build
 ```
 
 ### Preview Production Build
+
 Locally preview the production build:
+
 ```bash
 npm run preview
 ```
@@ -89,10 +105,11 @@ frontend/
 ## 🛡️ Linting
 
 To maintain code quality, run the linter:
+
 ```bash
 npm run lint
 ```
 
 ---
 
-Built by [Abdurezak Akmel](https://github.com/Abdurezak-Akmel)
+Built with ❤️ by Abdurezak Akmel, owner of HabeshaTech
