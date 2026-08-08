@@ -6,7 +6,7 @@ Built for the purpose of teaching intermmediate level website developers The Dat
 
 <!-- Screenshot Landing Page -->
 
-![Landing Page](public/Landing_Page_The_Note_Store_App.png)
+![Landing Page](public/Landing_Page_The_Note_App.png)
 
 ## 🚀 Features
 
